@@ -1,0 +1,188 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block metadescription %}
+   {% if category %}
+       {{ category.description | truncatewords:155 }}
+   {% else %}
+        welcome to MegaTech store where you can buy different items.....
+   {% endif %}
+{% endblock %}
+
+<!---title part-->
+{% block title %}
+ {% if category %}
+       {{ category.name }} - MegaTech Store
+   {% else %}
+        See our New collections...
+   {% endif %}
+{% endblock %}
+<!---title end-->
+
+
+
+{% block content %}
+
+{% if category %}
+   <div>
+       <div class="row my_row_class">
+           <div class="mx-auto">
+               <p style="font-weight:bold;font-size:20px;"><a href="{% url 'kartapp:allProdCat' %}" style="text-decoration:none;">Our Product Collections :</a> {{category.name}}</p>
+              </div>
+           </div>
+   </div>
+{% endif %}
+<div class="mx-auto">
+    {% if category %}
+<!--       <img class="my_image" src="{{category.image.url}}" alt="{{category.name}}">-->
+</div>
+<br>
+<div>
+<!--    <h1 class="text-center my_title">{{category.name}}</h1>-->
+<!--    <p class="text-justify">{{category.description}}</p>-->
+</div>
+    {% else %}
+<div>
+<!--    <img class="my_image my_image_padding" src="{% static 'img/banner.jpg' %}" alt="our products" width="100%">-->
+
+
+<!--    carosul-->
+
+
+
+ <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active" >
+      <img src="{% static 'img/banner.jpg' %}" class="d-block w-100 h-50" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'img/banner-5.jpg' %}" class="d-block w-100 h-50" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'img/img-1.jpg' %}" class="d-block w-100 h-50" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+<!--    carosul end-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+<br>
+<div>
+    <h1 class="text-center my_title" style="font-weight:bold;font-size:30px;margin-top:20px;">This article is about the company. For other uses, see Nike (disambiguation).</h1>
+        <p class="text-justify" style="margin-top:30px;">
+        Nike, Inc.[note 1] (stylized as NIKE) is an American athletic footwear and apparel corporation
+            headquartered near Beaverton, Oregon, United States.[4] It is the world's largest supplier
+            of athletic shoes and apparel and a major manufacturer of sports equipment, with revenue in
+            excess of US$46 billion in its fiscal year 2022.[5][6] The company was founded on January 25,
+            1964, as "Blue Ribbon Sports", by Bill Bowerman and Phil Knight, and officially became Nike,
+            Inc. on May 30, 1971. The company takes its name from Nike, the Greek goddess of victory.[7]
+            Nike markets its products under its own brand, as well as Nike Golf, Nike Pro, Nike+, Air Jordan
+            , Nike Blazers, Air Force 1, Nike Dunk, Air Max, Foamposite, Nike Skateboarding, Nike CR7,[8] and
+            subsidiaries including Air Jordan and Converse (brand). Nike also owned Bauer Hockey from 1995 to
+            2008, and previously owned Cole Haan, Umbro, and Hurley International.[9] In addition to manufacturing
+            sportswear and equipment, the company operates retail stores under the Niketown name. Nike sponsors
+            many high-profile athletes and sports teams around the world, with the highly recognized trademarks
+            of "Just Do It" and the Swoosh logo.</p>
+
+
+
+
+
+
+</div>
+   {% endif %}
+
+
+<section id="repair" style="margin-top: 80px;">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12" style="height: 50vh; background-color: gray; background-image: url({% static 'img/banner-11.jpg' %}); background-position: center; background-repeat: no-repeat; background-size: cover; display: flex; justify-content: center; align-items: center;">
+                <div class="text-center">
+                    <h4 style="color: white; font-size: medium; font-weight: bold;">Repair Services</h4>
+                    <h1 style="color: white; font-weight: bold;">Up to <span style="color: red;">70% off</span> - All Products</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<div class="container" style="max-width: 1500px; margin-top: 40px;">
+    <div class="text text-center">
+        <h2>New Arrivals</h2>
+        <p>Summer Collection New Modern Products</p>
+    </div>
+    <div class="row">
+        {% for product in products.object_list %}
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3">
+            <div class="card text-center">
+                <a href="{{ product.get_url }}">
+                    <img class="card-img-top my_image" src="{{ product.image.url }}" alt="{{ product.name }}" style="width: 100%; height: 250px; object-fit: cover;">
+                </a>
+                <div class="card-body" style="border-radius: 20px; overflow: hidden;">
+                    <h4>{{ product.name }}</h4>
+                     <div class="star">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="price-item" style="display: flex;align-items: center;justify-content: space-between;margin-top:10px;">
+                        <h5>₹ {{ product.price }}</h5>
+                        <a href="{{ product.get_url }}"><i class="fa-solid fa-eye" style="color: black;"></i></a>
+                </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="mx-auto">
+        {% if products.paginator.num_pages > 1 %}
+
+        <hr>
+        <div class="text-center">
+            {% for pg in products.paginator.page_range %}
+                <a href="?page={{pg}}" class="btn btn-light btn-md {% if products.number == pg %} active {% endif %}" style="transition: color 0.3s;">{{pg}}</a>
+             {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+    <br>
+</div>
+
+{% endblock %}
+
+
+

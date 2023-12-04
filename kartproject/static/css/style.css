@@ -1,0 +1,171 @@
+@import url('https://fonts.googleapis.com/css2?family=Arimo&family=Dosis:wght@200&family=Inter:wght@200;300;600;700&family=League+Spartan:wght@100&family=Libre+Baskerville:wght@700&family=Poppins:wght@400;500&family=Roboto:wght@100;400&display=swap');
+
+*{
+      margin:0;
+      padding:0;
+}
+body{
+     font-family: 'Inter', sans-serif;
+}
+/** navbar **/
+.nav-item{
+      margin-left:20px;
+      letter-spacing:.2em;
+      font-size:14px;
+      text-transform:uppercase;
+}
+.dropdown-item{
+      letter-spacing:.2em;
+      font-size:14px;
+      text-transform:uppercase;
+}
+.my_footer {
+      background-color:#f8f9fa;
+      height:60px;
+}
+.my_footer p{
+      padding-top:20px;
+      font-size:14px;
+}
+/** category page ***/
+
+.my_row_class{
+      padding-top:15px;
+}
+.my_row_class .mx-auto{
+      color:#000;
+      font-size:12px;
+}
+.my_image{
+      width:100%;
+      height:auto;
+}
+.my_title{
+      font-size:16px;
+      text-transform:uppercase;
+      letter-spacing:.2em;
+
+}
+.my_image_padding{
+      padding:5px;
+}
+.my_bottom_margin{
+      margin-bottom:10px;
+}
+
+.text{
+    margin-top: 50px;
+    margin-bottom:50px;
+}
+.text h2{
+    font-weight: 800;
+}
+.card-body h4{
+    font-size:14px;
+    text-transform:uppercase;
+    letter-spacing:.2em;
+}
+.card:hover {
+    transform: scale(1.01); /* Increase the size of the card on hover */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Add a subtle shadow effect */
+  }
+
+
+     .icon-hover:hover {
+    border-color: #3b71ca !important;
+    background-color: white !important;
+    color: #3b71ca !important;
+  }
+
+  .icon-hover:hover i {
+    color: #3b71ca !important;
+  }
+a.btn.btn-light.btn-md:hover,
+a.btn.btn-light.btn-md.active:hover {
+    background-color:#E35329;
+}
+.my_search_text{
+     padding-top:20px;
+}
+
+
+/*** cart **/
+
+.my_custom_table{
+       min-width:400px;
+       font-size:14px;
+}
+.my_custom_thead{
+       font-weight:normal;
+       text-transform:uppercase;
+       letter-spacing:.2em;
+       background-color:#f8f9fa!important;
+}
+.custom_a{
+      text-decoration:none;
+}
+.custom_icon{
+     text-decoration:none;
+     color:#868e96 ! important;
+}
+.my_custom_button{
+     margin-top:5px;
+}
+.carousel-item img{
+    object-fit:cover;
+    object-position: top;
+    height:60vh;
+    overflow:hidden;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+@media (min-width: 1025px) {
+.h-custom {
+height: 100vh !important;
+}
+}
+
+.card-registration .select-input.form-control[readonly]:not([disabled]) {
+font-size: 1rem;
+line-height: 2.15;
+padding-left: .75em;
+padding-right: .75em;
+}
+
+.card-registration .select-arrow {
+top: 13px;
+}
+
+.bg-grey {
+background-color: #eae8e8;
+}
+
+@media (min-width: 992px) {
+.card-registration-2 .bg-grey {
+border-top-right-radius: 16px;
+border-bottom-right-radius: 16px;
+}
+}
+
+@media (max-width: 991px) {
+.card-registration-2 .bg-grey {
+border-bottom-left-radius: 16px;
+border-bottom-right-radius: 16px;
+}
+}
+
+
+
+
+
+

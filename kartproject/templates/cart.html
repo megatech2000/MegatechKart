@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block metadescription %}
+    This is the Cart page. processed to review your items and place the order..
+{% endblock %}
+
+{% block title %}
+Cart - MegaTech pvt ltd
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid my-5" style="height:150vh;">
+    {% if not cart_items %}
+    <div class="text-center">
+        <h1 class="my_title">
+            Your Shopping Cart is Empty
+        </h1>
+        <p>
+            Please <a href="{% url 'kartapp:allProdCat' %}">continue shopping</a>.
+        </p>
+    </div>
+    {% else %}
+    <div>
+        <h1 class="my_title">
+            Your Shopping Cart
+        </h1>
+    </div>
+
+
+
+    <div id="successMessage" class="alert alert-success" style="display: none; position: relative;">
+    <p>Order placed successfully! <span id="closeButton" class="close" style="position: absolute; top: 1; right: 0;"><button type="button" class="btn-close" aria-label="Close"></button></span></p>
+</div>
+
+
+
+    <div class="row mt-4">
+        <div class="col-md-8">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Product</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Subtotal</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for cart_item in cart_items %}
+                        <tr>
+                            <td>
+                                <img src="{{cart_item.product.image.url}}" alt="{{cart_item.product.name}}" style="max-width:80px;height:auto;" class="img-fluid rounded">
+                            </td>
+                            <td>{{cart_item.product.name}}</td>
+                            <td>₹ {{cart_item.product.price}}</td>
+                            <td>
+                                <a href="{% url 'cartapp:add_cart' cart_item.product.id %}" class="btn btn-sm btn-outline-secondary"><i class="fa-solid fa-plus"></i></a>
+                                {{cart_item.quantity}}
+                                <a href="{% url 'cartapp:cart_remove' cart_item.product.id %}" class="btn btn-sm btn-outline-secondary"><i class="fa-solid fa-minus"></i></a>
+                            </td>
+                            <td>₹ {{cart_item.sub_total}}</td>
+                            <td>
+                                <a href="{% url 'cartapp:full_remove' cart_item.product.id %}" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title" style="font-weight:bold;">Cart Summary</h5>
+                    <p class="card-text mt-5">Total: <strong>₹ {{total}}</strong></p>
+                    <a href="#" class="btn btn-primary btn-block mt-2" id="buyButton">Proceed to Checkout</a>
+                    <a href="{% url 'kartapp:allProdCat' %}" class="btn btn-secondary btn-block mt-2">Continue Shopping</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+
+
+<script>
+// Function to show the success message
+function showSuccessMessage() {
+    document.getElementById('successMessage').style.display = 'block';
+}
+
+// Function to hide the success message
+function hideSuccessMessage() {
+    document.getElementById('successMessage').style.display = 'none';
+}
+
+// Event listener for the "Buy now" button
+document.getElementById('buyButton').addEventListener('click', function() {
+    showSuccessMessage();
+});
+
+// Event listener for the "Close" button
+document.getElementById('closeButton').addEventListener('click', function() {
+    hideSuccessMessage();
+});
+</script>
+
+{% endblock %}

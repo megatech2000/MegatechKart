@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block metadescription %}
+    This is the Cart page. processed to review your items and place the order..
+{% endblock %}
+
+{% block title %}
+Cart - MegaTech pvt ltd
+{% endblock %}
+
+{% block content %}
+
+{% for msg in messages %}
+<div class="container">
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong>{{msg}}!</strong>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+    </div>
+{% endfor %}
+
+<br><br>
+<form action="register" method="post">
+    {% csrf_token %}
+<div class="container" style="width:50%;height:70vh;">
+    <h1>Register </h1>
+    <br>
+<div class="mb-3">
+  <label for="formGroupExampleInput" class="form-label">Username</label>
+  <input type="text" class="form-control" name="username" id="formGroupExampleInput" placeholder="Enter Username">
+</div>
+    <div class="mb-3">
+  <label for="formGroupExampleInput1" class="form-label">Email</label>
+  <input type="email" class="form-control" name="email" id="formGroupExampleInput1" placeholder="Enter your email">
+</div>
+    <div class="mb-3">
+  <label for="formGroupExampleInput2" class="form-label">Password</label>
+  <input type="password" class="form-control" name="password" id="formGroupExampleInput2" placeholder="Enter your password">
+</div>
+<div class="mb-3">
+  <label for="formGroupExampleInput3" class="form-label">Confirm Password</label>
+  <input type="password" class="form-control" name="password1" id="formGroupExampleInput3" placeholder="Confirm your password">
+</div>
+    <button type="submit" class="btn btn-success">Register</button>
+    </div>
+</form>
+<br><br>
+
+
+{% endblock %}
